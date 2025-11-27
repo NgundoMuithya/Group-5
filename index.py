@@ -29,3 +29,4 @@ sales = [
 
 items = [sale['item'] for sale in sales]
 unique_items = list(set(items))
+
