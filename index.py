@@ -46,5 +46,6 @@ branch_total_quantities = {
 
 print(branch_total_quantities)
 
-branch_quantities = list(branch_total_quantities.values())
-print(branch_quantities)
+print(branch_total_quantities)
+highest_branch = max(branch_total_quantities, key=branch_total_quantities.get)
+print(highest_branch)
