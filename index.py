@@ -42,5 +42,4 @@ branch_total_quantities = {
     for branch in {s['branch'] for s in filtered_sales}
 }
 
-branch_quantities = list(branch_total_quantities.values())
-print(branch_quantities)
+print(branch_total_quantities)
