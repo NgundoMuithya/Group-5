@@ -37,3 +37,10 @@ print(top_items)
 # Calculate net revenue for each item and identify those with revenue > 2000
 filtered_sales = [sale for sale in sales if sale['item'] in top_items]
 print(filtered_sales)
+branch_total_quantities = {
+    branch: sum(s['quantity'] for s in filtered_sales if s['branch'] == branch)
+    for branch in {s['branch'] for s in filtered_sales}
+}
+
+branch_quantities = list(branch_total_quantities.values())
+print(branch_quantities)
