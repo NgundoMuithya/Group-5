@@ -30,10 +30,14 @@ sales = [
 items = [sale['item'] for sale in sales]
 unique_items = list(set(items))
 
-item_net_revenue = {item_name: sum( (sale['price'] * sale['quantity'] * (1 - sale['discount'])) for sale in sales if sale['item'] == item_name ) for item_name in unique_items}
+'''
+items_net_revenue = {}
+for unique_item in unique_items:
+    items_net_revenue[unique_item] = 0
+    for sale in sales:
+        if unique_item.lower() == sale['item'].lower():
+            items_net_revenue[unique_item] += sale['price'] * sale['quantity'] * (1 - sale['discount'])
+'''
 
-top_items = [item for item, revenue in item_net_revenue.items() if revenue > 2000]
-print(top_items)
-# Calculate net revenue for each item and identify those with revenue > 2000
-filtered_sales = [sale for sale in sales if sale['item'] in top_items]
-print(filtered_sales)
+items_net_revenue = {unique_item: sum(sale['price'] * sale['quantity'] * (1 - sale['discount']) for sale in sales if sale['item'].lower() == unique_item.lower())for unique_item in unique_items}
+print(items_net_revenue)
