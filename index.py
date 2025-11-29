@@ -27,25 +27,30 @@ sales = [
      "price": 310, "quantity": 2, "discount": 0.00, "date": "2025-01-06"},
 ]
 
+# Question 1
 items = [sale['item'] for sale in sales]
 unique_items = list(set(items))
-print(unique_items)
-item_net_revenue = {item_name: sum( (sale['price'] * sale['quantity'] * (1 - sale['discount'])) for sale in sales if sale['item'] == item_name ) for item_name in unique_items}
-print(item_net_revenue)
+print(f"Question 1: {unique_items}\n")
 
+# Question 2
+item_net_revenue = {item_name: sum( (sale['price'] * sale['quantity'] * (1 - sale['discount'])) for sale in sales if sale['item'] == item_name ) for item_name in unique_items}
+print(f"Question 2: {item_net_revenue}\n")
+
+# Question 3
 top_items = [item for item, revenue in item_net_revenue.items() if revenue > 2000]
-print(item_net_revenue.items())
-print(top_items)
-# Calculate net revenue for each item and identify those with revenue > 2000
+print(f"Question 3: {top_items}\n")
+
+# Question 4
 filtered_sales = [sale for sale in sales if sale['item'] in top_items]
-print(filtered_sales)
+print(f"Question 4: {filtered_sales}\n")
+
+# Question 5
 branch_total_quantities = {
     branch: sum(s['quantity'] for s in filtered_sales if s['branch'] == branch)
     for branch in {s['branch'] for s in filtered_sales}
 }
+print(f"Question 5: {branch_total_quantities}\n")
 
-print(branch_total_quantities)
-
-print(branch_total_quantities)
+# Question 6
 highest_branch = max(branch_total_quantities, key=branch_total_quantities.get)
-print(highest_branch)
+print(f"Question 6: {highest_branch}")
